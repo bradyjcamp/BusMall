@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // GLOBAL VARIABLES
 
@@ -19,8 +19,8 @@ let showResultsBtn = document.getElementById('show-results-btn');
 // OTHER GLOBALS
 
 const goatArray = [];
-let maxVotes = 0;
-let counter = 0;
+let maxVotes = 15;
+// let counter = 0;
 
 // CONSTRUCTOR
 
@@ -33,15 +33,25 @@ function Goat(name, fileExtension = 'jpg'){
 }
 
 // INSTANTIATE SOME GOATS
-new Goat('bunny-goat', 'png');
-new Goat('cool-goat');
-new Goat('cruisin-goat');
-new Goat('float-your-goat');
-new Goat('goat-out-of-hand');
-new Goat('kissing-goat');
-new Goat('sassy-goat');
-new Goat('smiling-goat');
-new Goat('sweater-goat');
+new Goat('bag');
+new Goat('banana');
+new Goat('bathroom');
+new Goat('boots');
+new Goat('breakfast');
+new Goat('bubblegum');
+new Goat('chair');
+new Goat('cthulhu');
+new Goat('dog-duck');
+new Goat('dragon');
+new Goat('pen');
+new Goat('pet-sweep');
+new Goat('scissors');
+new Goat('shark');
+new Goat('sweep', 'png');
+new Goat('tauntaun');
+new Goat('unicorn');
+new Goat('water-can');
+new Goat('wine-glass');
 
 console.log(goatArray);
 // EXECUTABLE CODE
@@ -54,7 +64,7 @@ function getRandomIndex(){
 function renderImages(){
   let goatOneIndex = getRandomIndex();
   let goatTwoIndex = getRandomIndex();
-  
+
   // validation - to make sure the images are unique per round 
   while(goatOneIndex === goatTwoIndex){
     goatTwoIndex = getRandomIndex();
@@ -81,14 +91,14 @@ function handleClick(event){
   maxVotes--;
   //listen to which image was clicked - increase votes
   let imgClicked = event.target.alt;
-  for(let i = 0; i < goatArray.length; i++;){
+  for(let i = 0; i < goatArray.length; i++){
     if(imgClicked === goatArray[i].name){
       goatArray[i].votes++;
     }
   }
   // console.log(goatArray);
 
-  // rerender 2 new images 
+  // rerender 2 new images
   renderImages();
   //once max attempts have reached 0, no londer allow clicks
   if(maxVotes === 0){
@@ -113,4 +123,4 @@ myContainer.addEventListener('click', handleClick);
 
 
 // EVENT #2
-show-results-btn.addEventListener('click', handleShowResults);
+showResultsBtn.addEventListener('click', handleShowResults);
