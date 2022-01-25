@@ -43,30 +43,6 @@ body p{
   color: white;
 }
 
-#show-results-btn{
-  background-color: chocolate;
-  display: flexbox;
-  margin: auto;
-  width: 8%;
-  text-align: center;
-  font-size: 30px;
-  margin-top: 50px;
-  border: 4px solid black;
-  border-radius: 10px;
-}
+#myChart{
 
-#display-results{
-  background-color: rgb(114, 51, 6);
-  color: white;
-  display: flexbox;
-  margin: auto;
-  width: 25%;
-  font-size: 25px;
-  list-style: disc;
-  margin-top: 20px;
-  border: 4px solid black;
-  border-radius: 10px;
-  list-style-position: inside;
-  padding: 15px;
-  margin-bottom: 30px;
 }
