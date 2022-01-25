@@ -1,34 +1,29 @@
 'use strict';
 
-// GLOBAL VARIABLES
-
-
-// DOM REFERENCES
-
-
 // listen to the container for voting
 let myContainer = document.getElementById('container');
+// listen to click on the "button" to display results
+let showResultsBtn = document.getElementById('show-results-btn');
 
 // JS will populate the src- to display images
 let imgOne = document.getElementById('image-one');
 let imgTwo = document.getElementById('image-two');
+let imgThree = document.getElementById('image-three');
 
-// listen to click on the "button" to display results
-let showResultsBtn = document.getElementById('show-results-btn');
 
 // OTHER GLOBALS
 
 const goatArray = [];
-let maxVotes = 15;
-// let counter = 0;
+let maxVotes = 5;
+let counter = 0;
 
 // CONSTRUCTOR
 
 function Goat(name, fileExtension = 'jpg'){
-  this.goatName = name;
+  this.name = name;
   this.src = `img/${name}.${fileExtension}`;
-  this.views = null;
-  this.votes = null;
+  this.views = 0;
+  this.votes = 0;
   goatArray.push(this);
 }
 
@@ -60,14 +55,17 @@ function getRandomIndex(){
   return Math.floor(Math.random() * goatArray.length);
 }
 
-
 function renderImages(){
   let goatOneIndex = getRandomIndex();
   let goatTwoIndex = getRandomIndex();
+  let goatThreeIndex = getRandomIndex();
 
   // validation - to make sure the images are unique per round 
-  while(goatOneIndex === goatTwoIndex){
-    goatTwoIndex = getRandomIndex();
+  while (goatOneIndex === goatTwoIndex || goatOneIndex === goatThreeIndex){
+    goatOneIndex = getRandomIndex();
+  }
+  while (goatThreeIndex === goatTwoIndex){
+    goatThreeIndex = getRandomIndex();
   }
 
   // grab the images and assign src attribute
@@ -77,6 +75,9 @@ function renderImages(){
   imgTwo.src =goatArray[goatTwoIndex].src;
   imgTwo.alt = goatArray[goatTwoIndex].name;
   goatArray[goatTwoIndex].views++;
+  imgThree.src = goatArray[goatThreeIndex].src;
+  imgThree.alt = goatArray[goatThreeIndex].name;
+  goatArray[goatThreeIndex].views++;
   // display images
 
 }
@@ -96,7 +97,7 @@ function handleClick(event){
       goatArray[i].votes++;
     }
   }
-  // console.log(goatArray);
+  // console.log(goat);
 
   // rerender 2 new images
   renderImages();
