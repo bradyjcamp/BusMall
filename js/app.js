@@ -48,27 +48,31 @@ function getRandomIndex(){
   return Math.floor(Math.random() * productArray.length);
 }
 
+//this is allowing us to loop through out imagas in the array and make sure they are different from one another
+let indexCollection = [];
 function renderImages(){
-  //creating variables in order to render random images
-  let productOneIndex = getRandomIndex();
-  let productTwoIndex = getRandomIndex();
-  let productThreeIndex = getRandomIndex();
-
-  // While loops used to ensure same images will not appear together
-  while (productOneIndex === productTwoIndex || productOneIndex === productThreeIndex){
-    productOneIndex = getRandomIndex();
-  }
-  while (productThreeIndex === productTwoIndex){
-    productThreeIndex = getRandomIndex();
+  while(indexCollection.length < 6){
+    let randomNum = getRandomIndex();
+    while(!indexCollection.includes(randomNum)){
+      indexCollection.push(randomNum);
+    }
   }
 
-  // grab the images and assign src attribute
+  // array = queue
+  // first in first out
+
+  let productOneIndex = indexCollection.pop();
+  let productTwoIndex = indexCollection.pop();
+  let productThreeIndex = indexCollection.pop();
+
   imgOne.src = productArray[productOneIndex].src;
   imgOne.alt = productArray[productOneIndex].name;
   productArray[productOneIndex].shown++;
+
   imgTwo.src =productArray[productTwoIndex].src;
   imgTwo.alt = productArray[productTwoIndex].name;
   productArray[productTwoIndex].shown++;
+  
   imgThree.src = productArray[productThreeIndex].src;
   imgThree.alt = productArray[productThreeIndex].name;
   productArray[productThreeIndex].shown++;
