@@ -13,7 +13,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 // Gloabal Variabls
 let indexCollection = [];
-const productArray = [];
+let productArray = [];
 let rounds = 25;
 
 function Product(name, fileExtension = 'jpg'){
@@ -24,26 +24,36 @@ function Product(name, fileExtension = 'jpg'){
   productArray.push(this);
 }
 
-// Instantiate
-new Product('bag');
-new Product('banana');
-new Product('bathroom');
-new Product('boots');
-new Product('breakfast');
-new Product('bubblegum');
-new Product('chair');
-new Product('cthulhu');
-new Product('dog-duck');
-new Product('dragon');
-new Product('pen');
-new Product('pet-sweep');
-new Product('scissors');
-new Product('shark');
-new Product('sweep', 'png');
-new Product('tauntaun');
-new Product('unicorn');
-new Product('water-can');
-new Product('wine-glass');
+let retrievedProducts = localStorage.getItem('products');
+
+let parsedProducts = JSON.parse(retrievedProducts);
+
+if(retrievedProducts){
+  productArray = parsedProducts;
+} else {
+
+  // Instantiate
+  new Product('bag');
+  new Product('banana');
+  new Product('bathroom');
+  new Product('boots');
+  new Product('breakfast');
+  new Product('bubblegum');
+  new Product('chair');
+  new Product('cthulhu');
+  new Product('dog-duck');
+  new Product('dragon');
+  new Product('pen');
+  new Product('pet-sweep');
+  new Product('scissors');
+  new Product('shark');
+  new Product('sweep', 'png');
+  new Product('tauntaun');
+  new Product('unicorn');
+  new Product('water-can');
+  new Product('wine-glass');
+
+}
 
 // Random number generator
 function getRandomIndex(){
@@ -149,6 +159,11 @@ function handleClick(event){
     myContainer.removeEventListener('click', handleClick);
     renderChart();
   }
+
+  let stringifiedProducts = JSON.stringify(productArray);
+  // console.log(stringifiedProducts);
+
+  localStorage.setItem('products', stringifiedProducts);
 }
 
 // function handleShowResults(event){
