@@ -56,16 +56,16 @@ function renderImages(){
     let randomNum = getRandomIndex();
     while(!indexCollection.includes(randomNum)){
       // unshift to add random to front?
-      indexCollection.unshift(randomNum);
+      indexCollection.push(randomNum);
     }
   }
   console.log(indexCollection);
   // array = queue
   // first in first out
 
-  let productOneIndex = indexCollection.pop();
-  let productTwoIndex = indexCollection.pop();
-  let productThreeIndex = indexCollection.pop();
+  let productOneIndex = indexCollection.shift();
+  let productTwoIndex = indexCollection.shift();
+  let productThreeIndex = indexCollection.shift();
 
   imgOne.src = productArray[productOneIndex].src;
   imgOne.alt = productArray[productOneIndex].name;
@@ -144,6 +144,7 @@ function handleClick(event){
   }
   // rerender new images
   renderImages();
+
   if(rounds === 0){
     myContainer.removeEventListener('click', handleClick);
     renderChart();
