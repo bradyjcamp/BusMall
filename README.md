@@ -20,4 +20,3 @@ This project is about creating a web page to showcase different products and hav
   - HTML
   - CSS
   -JavaScript
-  

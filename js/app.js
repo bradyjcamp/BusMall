@@ -2,7 +2,6 @@
 
 // Listen to the container for selections and show results button
 let myContainer = document.getElementById('container');
-// let showResultsBtn = document.getElementById('show-results-btn');
 
 // Display images in HTML
 let imgOne = document.getElementById('image-one');
@@ -69,9 +68,6 @@ function renderImages(){
       indexCollection.push(randomNum);
     }
   }
-  console.log(indexCollection);
-  // array = queue
-  // first in first out
 
   let productOneIndex = indexCollection.shift();
   let productTwoIndex = indexCollection.shift();
@@ -89,7 +85,6 @@ function renderImages(){
   imgThree.alt = productArray[productThreeIndex].name;
   productArray[productThreeIndex].shown++;
   // display images
-
 }
 
 renderImages();
@@ -161,17 +156,10 @@ function handleClick(event){
   }
 
   let stringifiedProducts = JSON.stringify(productArray);
-  // console.log(stringifiedProducts);
 
   localStorage.setItem('products', stringifiedProducts);
 }
 
-// function handleShowResults(event){
-//   let resultsList =document.getElementById('display-results');
-//   if(rounds === 0){
-//     renderChart();
-//   }
-// }
 
 myContainer.addEventListener('click', handleClick);
-// showResultsBtn.addEventListener('click', handleShowResults);
+
