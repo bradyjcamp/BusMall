@@ -1,13 +1,13 @@
 #container{
   display: flex;
-  width: 65% ;
+  width: 80% ;
   margin: auto;
   margin-top: 20px;
 }
 
 img{
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
 }
 
 body{
@@ -20,7 +20,7 @@ body{
 
 body h1{
   text-align: center;
-  font-size: 100px;
+  font-size: 70px;
   background-color: chocolate;
   display: flexbox;
   margin: auto;
@@ -32,7 +32,7 @@ body h1{
 
 body p{
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   background-color: rgb(114, 51, 6);
   display: flexbox;
   margin: auto;
